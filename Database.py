@@ -5,7 +5,7 @@ def open_db(board_title = None, start_date=None, end_date=None):
     '''
     打開 DataBase 此處使用MongoDB
     '''
-    client = pymongo.MongoClient('mongodb://localhost:27017/')
+    client = pymongo.MongoClient('mymongo', port=27017)
     client.server_info()
     db = client.ptt
     collect = db["pttscrapy"]

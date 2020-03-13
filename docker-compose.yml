@@ -1,0 +1,28 @@
+version: '3'
+services:
+    main_python:
+        build: .
+        networks:
+            - ptt_to_db
+        tty: true
+        stdin_open: true
+        depends_on:
+            - db
+    db:
+        image: mongo
+        container_name: mymongo
+        volumes:
+            - "/data/mongo:/data/db"
+            - "/data/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+        restart: always
+        ports:
+            - 27017:27017
+        networks:
+            - ptt_to_db
+
+networks:
+    ptt_to_db:
+        driver: bridge
+
+
+
