@@ -3,7 +3,7 @@ import pymongo
 
 def open_db(board_title = None, start_date=None, end_date=None):
     '''
-    打開 DataBase 此處使用MongoDB
+    打開 DataBase 此處使用MongoDB，並且設定unique Index，方便日後查詢及避免重複抓取資料
     '''
     client = pymongo.MongoClient('mymongo', port=27017)
     client.server_info()
